@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 function Days({ day }) {
   const toDetail = useHistory();
-  const [n, sN] = useState(Math.floor(Math.random() * 5));
+  const [n, sN] = useState(Math.floor(Math.random() * 6));
   console.log(n);
 
   return (
@@ -13,7 +13,7 @@ function Days({ day }) {
       {Array.from({ length: 5 }, (c, i) => {
         return (
           <div>
-            <Circle style={{ backgroundColor: n <= i ? "#ddd" : "red" }} />
+            <Circle style={{ backgroundColor: n <= i ? "#ddd" : "palevioletred" }} />
           </div>
         );
       })}
@@ -37,8 +37,11 @@ function Main() {
         <div>
           <h1>내 일주일은?</h1>
         </div>
+
         {day.map((day, i) => (
-          <Days day={day} />
+          <Contents>
+            <Days day={day} />
+          </Contents>
         ))}
       </Wrap>
     </>
@@ -47,12 +50,21 @@ function Main() {
 
 const Wrap = styled.div`
   background-color: #eee;
-  width: 70vw;
+  min-width: 270px;
+  width: 40vw;
+  min-height: 400px;
   height: 70vh;
   margin: 30px auto;
   flex-direction: column;
   border: 1px solid #ddd;
   border-radius: 10px;
+`;
+
+const Contents = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Circle = styled.div`

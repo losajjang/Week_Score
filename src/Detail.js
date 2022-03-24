@@ -17,7 +17,7 @@ const Detail = (props) => {
           return (
             <Circle
               key={i}
-              style={{ backgroundColor: n <= i ? "#ddd" : "red" }}
+              style={{ backgroundColor: n <= i ? "#ddd" : "palevioletred" }}
               onClick={() => {
                 sN(i + 1);
               }}
@@ -38,7 +38,9 @@ const Detail = (props) => {
 
 const Wrap = styled.div`
   background-color: #eee;
-  width: 70vw;
+  min-width: 270px;
+  width: 40vw;
+  min-height: 400px;
   height: 70vh;
   margin: 30px auto;
   flex-direction: column;
@@ -69,7 +71,7 @@ const Circle = styled.div`
   height: 30px;
   border-radius: 30px;
   margin: 5px;
-  background-color: n <= i ? "#ddd" : "red";
+
 `;
 
 const Back = styled.button`
