@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-function Days({ day }) {
+function Days({ days }) {
   const toDetail = useHistory();
   const [n, sN] = useState(Math.floor(Math.random() * 6));
   console.log(n);
 
   return (
     <SortedRow>
-      {day}
+      {days}
       {Array.from({ length: 5 }, (c, i) => {
         return (
           <div>
@@ -20,7 +20,7 @@ function Days({ day }) {
       <div>
         <Triangle
           onClick={() => {
-            toDetail.push(`/detail/${day}`);
+            toDetail.push(`/detail/${days}`);
           }}
         />
       </div>
@@ -40,7 +40,7 @@ function Main() {
 
         {day.map((day, i) => (
           <Contents>
-            <Days day={day} />
+            <Days days={day} />
           </Contents>
         ))}
       </Wrap>
