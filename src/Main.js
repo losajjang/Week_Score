@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-
 function Days({ day }) {
   const toDetail = useHistory();
   const [n, sN] = useState(Math.floor(Math.random() * 5));
@@ -14,7 +13,7 @@ function Days({ day }) {
       {Array.from({ length: 5 }, (c, i) => {
         return (
           <div>
-            <Circle />
+            <Circle style={{ backgroundColor: n <= i ? "#ddd" : "red" }} />
           </div>
         );
       })}
@@ -61,7 +60,6 @@ const Circle = styled.div`
   height: 30px;
   border-radius: 30px;
   margin: 5px;
-  background-color: #ddd;
 `;
 
 const Triangle = styled.div`

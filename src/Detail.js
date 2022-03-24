@@ -1,28 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const Detail = (props) => {
   const history = useHistory();
   const params = useParams();
-
+  const [n, sN] = useState(0);
 
   return (
     <Wrap>
       <h1>
         <Span>{params.day}요일</Span> 평점 남기기
       </h1>
-      <div>
+      <SortedRow>
         {Array.from({ length: 5 }, (c, i) => {
           return (
-            <SortedRow>
-              <Circle key={i}/>
-              shit
-            </SortedRow>
+            <Circle
+              key={i}
+              style={{ backgroundColor: n <= i ? "#ddd" : "red" }}
+              onClick={() => {
+                sN(i + 1);
+              }}
+            />
           );
         })}
-      </div>
-      <Back>뒤로가기</Back>
+      </SortedRow>
+      <Back
+        onClick={() => {
+          history.goBack();
+        }}
+      >
+        뒤로가기
+      </Back>
     </Wrap>
   );
 };
@@ -40,6 +49,7 @@ const Wrap = styled.div`
 const SortedRow = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
 `;
 
 const Span = styled.span`
@@ -52,14 +62,14 @@ const Span = styled.span`
 
 const Circle = styled.div`
   :hover {
-    background-color: gray;
+    
     cursor: pointer;
   }
   width: 30px;
   height: 30px;
   border-radius: 30px;
   margin: 5px;
-  background-color: #ddd;
+  background-color: n <= i ? "#ddd" : "red";
 `;
 
 const Back = styled.button`
